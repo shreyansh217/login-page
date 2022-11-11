@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
@@ -27,17 +26,8 @@ router.post("/login",function(req,res,next){
                 }
                 if(result){
 
-            //  var token = jwt.sign(
-            //             {
-            //                 username:user[0].username,
-            //                 userid:user[0]._id
+        
 
-            //         },
-            //             'secret',
-            //             {
-            //                 expiresIn:"1h"
-            //             }
-            //         );
 
                   res.status(200).json({
                         message:"User Found,    YOU CAN NOW ACCESS YOUR DATA",
