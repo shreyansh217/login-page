@@ -3,7 +3,7 @@ var router = express.Router();
 const mongoose = require('mongoose');
 var userModel = require('../modules/user');
 const bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
+// var jwt = require('jsonwebtoken');
 
 router.post("/login",function(req,res,next){
     var username = req.body.username;
@@ -26,7 +26,8 @@ router.post("/login",function(req,res,next){
                 }
                 if(result){
 
-        
+            //  var token = jwt.sign(
+
 
 
                   res.status(200).json({
