@@ -3,38 +3,43 @@ var router = express.Router();
 const mongoose = require('mongoose');
 var userModel = require('../modules/user');
 const bcrypt = require('bcrypt');
+
+
+
 // var jwt = require('jsonwebtoken');
+
+
 
 router.post("/login",function(req,res,next){
     var username = req.body.username;
     var email = req.body.email;
     var password = req.body.password;
     userModel.find({email:email})
-    .exec()
+    // .exec()
     .then(user=>{
         if(user.length<1){
             res.status(404).json({
-                message:"Authentication Failure",
+                message:"Authentication Failure1",
             }); 
 
         }else{
             bcrypt.compare(req.body.password, user[0].password, function(err, result) {
                 if(err){
                  res.status(404).json({
-                    message:"Authentication Failure",
+                    message:"Authentication Failure2",
                 }); 
                 }
+                
                 if(result){
-
-            //  var token = jwt.sign(
-
+                    // 
 
 
                   res.status(200).json({
-                        message:"User Found,    YOU CAN NOW ACCESS YOUR DATA",
+                        message:"User Found,YOU CAN NOW ACCESS YOUR DATA",
                         user:user
                     });
                 }
+
                 else{
                     res.status(404).json({
                         message:"Authentication Failure",
@@ -62,7 +67,8 @@ router.post("/signup",function(req,res,next){
         res.json({
             message:"Password not matched!!!!!!",
         });
-    }else{
+    }
+    else{
         bcrypt.hash(password, 10, function(err, hash) {
             if(err){
                 return res.json({
